@@ -1,6 +1,6 @@
 # Gbizinfo::GBizINFORESTAPIApi
 
-All URIs are relative to *http://info.gbiz.go.jp/hojin*
+All URIs are relative to *https://info.gbiz.go.jp/hojin*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |

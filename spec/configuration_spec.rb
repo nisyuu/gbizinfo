@@ -1,7 +1,7 @@
 =begin
 #gBizINFO REST API
 
-#<div>各REST APIはHTTPリクエストヘッダ\"X-hojinInfo-api-token\"に動作確認用のAPIトークン\"DTcLxzo1lZaUYaQPVdSRxdS4MzlXNCs4\"を指定して動作を確認することができます。</div><div>※動作確認用のAPIトークンはこのページでの動作確認でのみ使用してください。</div><div>※REST APIを利用する際は必ず、<a href=\"./api_registration/form\">Web API利用申請</a>を行い、APIトークンを取得してください。</div>
+#<div>各REST APIはHTTPリクエストヘッダ\"X-hojinInfo-api-token\"に動作確認用のAPIトークン\"DTcLxzo1lZaUYaQPVdSRxdS4MzlXNCs4\"を指定して動作を確認することができます。</div><div>※動作確認用のAPIトークンはこのページでの動作確認でのみ使用してください。</div><div>※REST APIを利用する際は必ず、<a href='https://info.gbiz.go.jp/hojin/api_registration/form'>Web API利用申請</a>を行い、APIトークンを取得してください。</div>
 
 The version of the OpenAPI document: 1.0
 
@@ -18,7 +18,7 @@ describe Gbizinfo::Configuration do
   before(:each) do
     # uncomment below to setup host and base_path
     # require 'URI'
-    # uri = URI.parse("http://info.gbiz.go.jp/hojin")
+    # uri = URI.parse("https://info.gbiz.go.jp/hojin")
     # Gbizinfo.configure do |c|
     #   c.host = uri.host
     #   c.base_path = uri.path
@@ -28,14 +28,14 @@ describe Gbizinfo::Configuration do
   describe '#base_url' do
     it 'should have the default value' do
       # uncomment below to test default value of the base path
-      # expect(config.base_url).to eq("http://info.gbiz.go.jp/hojin")
+      # expect(config.base_url).to eq("https://info.gbiz.go.jp/hojin")
     end
 
     it 'should remove trailing slashes' do
       [nil, '', '/', '//'].each do |base_path|
         config.base_path = base_path
         # uncomment below to test trailing slashes
-        # expect(config.base_url).to eq("http://info.gbiz.go.jp/hojin")
+        # expect(config.base_url).to eq("https://info.gbiz.go.jp/hojin")
       end
     end
   end
