@@ -1,0 +1,1378 @@
+openapi: 3.0.1
+info:
+  title: gBizINFO REST API
+  description: <div>各REST APIはHTTPリクエストヘッダ"X-hojinInfo-api-token"に動作確認用のAPIトークン"DTcLxzo1lZaUYaQPVdSRxdS4MzlXNCs4"を指定して動作を確認することができます。</div><div>※動作確認用のAPIトークンはこのページでの動作確認でのみ使用してください。</div><div>※REST
+    APIを利用する際は必ず、<a href="./api_registration/form">Web API利用申請</a>を行い、APIトークンを取得してください。</div>
+  termsOfService: /api
+  version: "1.0"
+servers:
+- url: //info.gbiz.go.jp/hojin
+tags:
+- name: hojin-info-controller
+  description: Hojin Info Controller
+paths:
+  /v1/hojin:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOに登録された法人を検索します.
+      description: gBizINFOに登録された法人を検索します。
+      operationId: searchInfoUsingGET
+      parameters:
+      - name: corporate_number
+        in: query
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        schema:
+          type: string
+      - name: name
+        in: query
+        description: "法人名：法人名を設定。\r\n入力された法人名を部分一致で検索。"
+        schema:
+          type: string
+      - name: exist_flg
+        in: query
+        description: "法人活動情報：以下のコードを設定。\r\ntrue あり \r\nfalse なし"
+        schema:
+          type: string
+      - name: corporate_type
+        in: query
+        description: "法人種別：以下のコードを設定。\r\n101 国の機関\r\n201 地方公共団体 \r\n301 株式会社\r\n302\
+          \ 有限会社\r\n303 合名会社\r\n304 合資会社\r\n305 合同会社\r\n399 その他の設立登記法人\r\n401 外国会社\
+          等\r\n499 その他\r\n複数の場合はカンマ区切りでコードを設定。"
+        schema:
+          type: string
+      - name: prefecture
+        in: query
+        description: 所在地(都道府県)：JIS X 0401都道府県コードを設定。
+        schema:
+          type: string
+      - name: city
+        in: query
+        description: 所在地(市区町村)：総務省地方公共団体コードの市区町村コードを設定。(prefecture設定必須)
+        schema:
+          type: string
+      - name: capital_stock_from
+        in: query
+        description: 資本金(以上)：資本金の下限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: capital_stock_to
+        in: query
+        description: 資本金(以下)：資本金の上限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: employee_number_from
+        in: query
+        description: 従業員数(以上)：従業員数の下限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: employee_number_to
+        in: query
+        description: 従業員数(以下)：従業員数の上限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: founded_year
+        in: query
+        description: "創業年・設立年：正の整数を設定。\r\n複数の場合はカンマ区切りで年を設定。"
+        schema:
+          type: string
+      - name: sales_area
+        in: query
+        description: "営業エリア：https://info.gbiz.go.jp/codelist/document/codelist.pdf\r\
+          \n地域対応表のgBizINFOのマスターコードを設定。 複数の場合はカンマ区切りでコードを設定。"
+        schema:
+          type: string
+      - name: business_item
+        in: query
+        description: "全省庁統一資格の営業品目：https://info.gbiz.go.jp/codelist/document/codelist.pdf\r\
+          \n営業品目コードを設定。\r\n複数の場合はカンマ区切りでコードを設定。"
+        schema:
+          type: string
+      - name: unified_qualification
+        in: query
+        description: 全省庁統一資格の資格等級（従来型）：従来型の資格等級指定を行う場合に使用する。資格等級（物品の製造、物品の販売、役務の提供等、物品の買受け）のいずれかがA,B,C,Dであるものを指定。複数指定の場合は半角カンマ区切りで半角コードを設定。
+        schema:
+          type: string
+      - name: unified_qualification_sub01
+        in: query
+        description: 全省庁統一資格の資格等級(物品の製造)：物品の製造をA,B,C,Dで指定。複数指定の場合は半角カンマ区切りで半角コードを設定。
+        schema:
+          type: string
+      - name: unified_qualification_sub02
+        in: query
+        description: 全省庁統一資格の資格等級(物品の販売)：物品の販売をA,B,C,Dで指定。複数指定の場合は半角カンマ区切りで半角コードを設定。
+        schema:
+          type: string
+      - name: unified_qualification_sub03
+        in: query
+        description: 全省庁統一資格の資格等級(役務の提供等)：役務の提供等をA,B,C,Dで指定。複数指定の場合は半角カンマ区切りで半角コードを設定。
+        schema:
+          type: string
+      - name: unified_qualification_sub04
+        in: query
+        description: 全省庁統一資格の資格等級(物品の買受け)：物品の買受けをA,B,C,Dで指定。複数指定の場合は半角カンマ区切りで半角コードを設定。
+        schema:
+          type: string
+      - name: net_sales_summary_of_business_results_from
+        in: query
+        description: 売上高（以上）：売上高の下限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: net_sales_summary_of_business_results_to
+        in: query
+        description: 売上高（以下）：売上高の上限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: net_income_loss_summary_of_business_results_from
+        in: query
+        description: 当期純利益又は当期純損失（△）（以上）：当期純利益又は当期純損失（△）の下限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: net_income_loss_summary_of_business_results_to
+        in: query
+        description: 当期純利益又は当期純損失（△）（以下）：当期純利益又は当期純損失（△）の上限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: total_assets_summary_of_business_results_from
+        in: query
+        description: 総資産額（以上）：総資産額の下限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: total_assets_summary_of_business_results_to
+        in: query
+        description: 総資産額（以下）：総資産額の上限を設定。0以上の整数を設定。
+        schema:
+          type: string
+      - name: name_major_shareholders
+        in: query
+        description: "大株主名：大株主名を設定。\r\n入力された大株主名を部分一致で検索。"
+        schema:
+          type: string
+      - name: average_continuous_service_years
+        in: query
+        description: "平均継続勤務年数：以下のコードを設定。\r\nA：～5年\r\nB：6年～10年\r\nC：11年～20年\r\nD：\
+          21年～"
+        schema:
+          type: string
+      - name: average_age
+        in: query
+        description: "従業員の平均年齢：以下のコードを設定。\r\nA：～30歳\r\nB：31歳～45歳\r\nC：46歳～60歳\r\n\
+          D：61歳～"
+        schema:
+          type: string
+      - name: month_average_predetermined_overtime_hours
+        in: query
+        description: "月平均所定外労働時間：以下のコードを設定。\r\nA：20時間未満\r\nB：40時間未満\r\nC：40時間以上"
+        schema:
+          type: string
+      - name: female_workers_proportion
+        in: query
+        description: "労働者に占める女性労働者の割合：以下のコードを設定。\r\nA：～20%\r\nB：21%～40%\r\nC：41%～\
+          60%\r\nD：61%～"
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: "年度：正の整数を設定。\r\n複数の場合はカンマ区切りで年を設定。"
+        schema:
+          type: string
+      - name: ministry
+        in: query
+        description: "担当府省：\r\n担当府省コードの内部コードを指定。複数の場合はカンマ区切りでコードを設定。\r\n内部コードは以下。\r\
+          \nhttps://info.gbiz.go.jp/common/data/setcodelist.pdf"
+        schema:
+          type: string
+      - name: source
+        in: query
+        description: "出典元：以下のコードを設定。\r\n1 調達\r\n2 表彰\r\n3 届出認定\r\n4 補助金\r\n5 特許\r\n\
+          6 財務\r\n複数の場合はカンマ区切りでコードを設定。"
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1,上限値10。"
+        schema:
+          type: string
+          default: "1"
+      - name: limit
+        in: query
+        description: "検索結果の1ページあたりの件数：0以上の整数を設定。\r\n下限値0,上限値5000。"
+        schema:
+          type: string
+          default: "1000"
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された法人基本情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/certification:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された届出・認定情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getCertificationUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/commendation:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された表彰情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getCommendationUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/finance:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された財務情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getFinanceUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/patent:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された特許情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getPatentUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/procurement:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された調達情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getProcurementUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/subsidy:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された補助金情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getSubsidyUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/updateInfo/workplace:
+    get:
+      tags:
+      - gBizINFO REST API (Period-specified Search)
+      summary: gBizINFOから期間内に追加/更新された職場情報を取得します.
+      description: 指定された期間内に追加/更新された情報を取得します。
+      operationId: getWorkplaceInformationUpdateInfoUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: "検索結果のページ番号：正の整数を設定。\r\n下限値1。"
+        schema:
+          type: string
+          default: "1"
+      - name: from
+        in: query
+        description: 検索対象期間の開始日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      - name: to
+        in: query
+        description: 検索対象期間の終了日：yyyyMMdd形式を設定。
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから法人基本情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/certification:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから届出・認定情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getCertificationUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/commendation:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから表彰情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getCommendationUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/finance:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから財務情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getFinanceUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/patent:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから特許情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getPatentUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/procurement:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから調達情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getProcurementUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/subsidy:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから補助金情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getSubsidyUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+  /v1/hojin/{corporate_number}/workplace:
+    get:
+      tags:
+      - gBizINFO REST API
+      summary: gBizINFOから職場情報を取得します.
+      description: 指定された法人番号の情報を取得します。
+      operationId: getWorkplaceInformationUsingGET
+      parameters:
+      - name: X-hojinInfo-api-token
+        in: header
+        description: APIトークン
+        required: true
+        schema:
+          type: string
+      - name: corporate_number
+        in: path
+        description: "法人番号：法人番号を設定。\r\n入力された法人番号を完全一致で検索。"
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HojinInfoResponse'
+        401:
+          description: Unauthorized
+          content: {}
+        403:
+          description: Forbidden
+          content: {}
+        404:
+          description: Not Found
+          content: {}
+components:
+  schemas:
+    WomenActivityInfos:
+      type: object
+      properties:
+        female_share_of_manager:
+          type: integer
+          description: 女性管理職人数
+          format: int64
+        female_share_of_officers:
+          type: integer
+          description: 女性役員人数
+          format: int64
+        female_workers_proportion:
+          type: number
+          description: 労働者に占める女性労働者の割合
+          format: double
+        female_workers_proportion_type:
+          type: string
+          description: 労働者に占める女性労働者の割合種別
+        gender_total_of_manager:
+          type: integer
+          description: 管理職に占める女性の割合
+          format: int64
+        gender_total_of_officers:
+          type: integer
+          description: 役員全体人数（男女計）
+          format: int64
+    HojinInfo:
+      type: object
+      properties:
+        business_items:
+          type: array
+          description: 全省庁統一資格の営業品目
+          items:
+            type: string
+        business_summary:
+          type: string
+          description: 事業概要
+        capital_stock:
+          type: integer
+          description: 資本金
+          format: int64
+        certification:
+          type: array
+          description: 届出・認定情報
+          items:
+            $ref: '#/components/schemas/CertificationInfo'
+        close_cause:
+          type: string
+          description: 登記記録の閉鎖等の事由
+        close_date:
+          type: string
+          description: 登記記録の閉鎖等年月日
+        commendation:
+          type: array
+          description: 表彰情報
+          items:
+            $ref: '#/components/schemas/CommendationInfo'
+        company_size_female:
+          type: integer
+          description: 企業規模詳細(女)
+          format: int64
+        company_size_male:
+          type: integer
+          description: 企業規模詳細(男)
+          format: int64
+        company_url:
+          type: string
+          description: 企業ホームページ
+        corporate_number:
+          type: string
+          description: 法人番号
+        date_of_establishment:
+          type: string
+          description: 設立年月日
+        employee_number:
+          type: integer
+          description: 従業員数
+          format: int64
+        finance:
+          $ref: '#/components/schemas/Finance'
+        founding_year:
+          type: integer
+          description: 創業年
+          format: int32
+        kana:
+          type: string
+          description: 法人名フリガナ
+        location:
+          type: string
+          description: 本社所在地
+        name:
+          type: string
+          description: 法人名
+        name_en:
+          type: string
+          description: 法人名英語
+        number_of_activity:
+          type: string
+          description: 法人活動情報件数
+        patent:
+          type: array
+          description: 特許情報
+          items:
+            $ref: '#/components/schemas/PatentInfo'
+        postal_code:
+          type: string
+          description: 郵便番号
+        procurement:
+          type: array
+          description: 調達情報
+          items:
+            $ref: '#/components/schemas/ProcurementInfo'
+        qualification_grade:
+          type: string
+          description: 全省庁統一資格の資格等級(物品の製造、物品の販売、役務の提供等、物品の買受け)
+        representative_name:
+          type: string
+          description: 法人代表者名
+        representative_position:
+          type: string
+          description: 法人代表者役職
+        status:
+          type: string
+          description: ステータス
+        subsidy:
+          type: array
+          description: 補助金情報
+          items:
+            $ref: '#/components/schemas/SubsidyInfo'
+        update_date:
+          type: string
+          description: 最終更新日
+        workplace_info:
+          $ref: '#/components/schemas/WorkplaceInfoBean'
+    HojinInfoResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          description: エラー情報(エラーがある場合に出力します。)
+          items:
+            $ref: '#/components/schemas/ApiError'
+        hojin-infos:
+          type: array
+          description: gBizINFOデータ
+          items:
+            $ref: '#/components/schemas/HojinInfo'
+        id:
+          type: string
+          description: リクエストid
+        message:
+          type: string
+          description: メッセージ
+    Finance:
+      type: object
+      properties:
+        accounting_standards:
+          type: string
+          description: 会計基準
+        fiscal_year_cover_page:
+          type: string
+          description: 期
+        major_shareholders:
+          type: array
+          description: 大株主
+          items:
+            $ref: '#/components/schemas/MajorShareholders'
+        management_index:
+          type: array
+          description: 財務
+          items:
+            $ref: '#/components/schemas/ManagementIndex'
+    CertificationInfo:
+      type: object
+      properties:
+        category:
+          type: string
+          description: 部門
+        date_of_approval:
+          type: string
+          description: 認定日
+        enterprise_scale:
+          type: string
+          description: 企業規模
+        expiration_date:
+          type: string
+          description: 有効期限
+        government_departments:
+          type: string
+          description: 府省
+        target:
+          type: string
+          description: 対象
+        title:
+          type: string
+          description: 届出認定等
+    CommendationInfo:
+      type: object
+      properties:
+        category:
+          type: string
+          description: 部門
+        date_of_commendation:
+          type: string
+          description: 年月日
+        government_departments:
+          type: string
+          description: 府省
+        target:
+          type: string
+          description: 受賞対象
+        title:
+          type: string
+          description: 表彰名
+    HashMap«string,string»:
+      type: object
+      additionalProperties:
+        type: string
+    CompatibilityOfChildcareAndWork:
+      type: object
+      properties:
+        maternity_leave_acquisition_num:
+          type: integer
+          description: 育児休業取得者数（女性）
+          format: int64
+        number_of_maternity_leave:
+          type: integer
+          description: 育児休業対象者数（女性）
+          format: int64
+        number_of_paternity_leave:
+          type: integer
+          description: 育児休業対象者数（男性）
+          format: int64
+        paternity_leave_acquisition_num:
+          type: integer
+          description: 育児休業取得者数（男性）
+          format: int64
+    PatentInfo:
+      type: object
+      properties:
+        application_date:
+          type: string
+          description: 出願年月日
+        application_number:
+          type: string
+          description: 出願番号
+        classifications:
+          type: array
+          description: 分類
+          items:
+            $ref: '#/components/schemas/HashMap«string,string»'
+        patent_type:
+          type: string
+          description: 特許/意匠/商標
+        title:
+          type: string
+          description: 発明の名称(等)/意匠に係る物品/表示用商標
+    MajorShareholders:
+      type: object
+      properties:
+        name_major_shareholders:
+          type: string
+          description: 企業名もしくは出資者
+        shareholding_ratio:
+          type: number
+          description: 出資比率
+          format: double
+    SubsidyInfo:
+      type: object
+      properties:
+        amount:
+          type: string
+          description: 金額
+        date_of_approval:
+          type: string
+          description: 認定日
+        government_departments:
+          type: string
+          description: 府省
+        joint_signatures:
+          type: array
+          description: 連名
+          items:
+            type: string
+        note:
+          type: string
+          description: 備考
+        subsidy_resource:
+          type: string
+          description: 補助金財源
+        target:
+          type: string
+          description: 対象
+        title:
+          type: string
+          description: 補助金等
+    WorkplaceInfoBean:
+      type: object
+      properties:
+        base_infos:
+          $ref: '#/components/schemas/WorkplaceBaseInfos'
+        compatibility_of_childcare_and_work:
+          $ref: '#/components/schemas/CompatibilityOfChildcareAndWork'
+        women_activity_infos:
+          $ref: '#/components/schemas/WomenActivityInfos'
+    ApiError:
+      type: object
+      properties:
+        item:
+          type: string
+          description: エラー箇所(項目)
+        message:
+          type: string
+          description: エラーメッセージ
+    ManagementIndex:
+      type: object
+      properties:
+        capital_stock_summary_of_business_results:
+          type: integer
+          description: 資本金
+          format: int64
+        capital_stock_summary_of_business_results_unit_ref:
+          type: string
+          description: 資本金(単位)
+        gross_operating_revenue_summary_of_business_results:
+          type: integer
+          description: 営業総収入
+          format: int64
+        gross_operating_revenue_summary_of_business_results_unit_ref:
+          type: string
+          description: 営業総収入（単位）
+        net_assets_summary_of_business_results:
+          type: integer
+          description: 純資産額
+          format: int64
+        net_assets_summary_of_business_results_unit_ref:
+          type: string
+          description: 純資産額(単位)
+        net_income_loss_summary_of_business_results:
+          type: integer
+          description: 当期純利益又は当期純損失(△)
+          format: int64
+        net_income_loss_summary_of_business_results_unit_ref:
+          type: string
+          description: 当期純利益又は当期純損失(△)(単位)
+        net_premiums_written_summary_of_business_results_ins:
+          type: integer
+          description: 正味収入保険料
+          format: int64
+        net_premiums_written_summary_of_business_results_ins_unit_ref:
+          type: string
+          description: 正味収入保険料（単位）
+        net_sales_summary_of_business_results:
+          type: integer
+          description: 売上高
+          format: int64
+        net_sales_summary_of_business_results_unit_ref:
+          type: string
+          description: 売上高(単位)
+        number_of_employees:
+          type: integer
+          description: 従業員数
+          format: int64
+        number_of_employees_unit_ref:
+          type: string
+          description: 従業員数(単位)
+        operating_revenue1_summary_of_business_results:
+          type: integer
+          description: 営業収益
+          format: int64
+        operating_revenue1_summary_of_business_results_unit_ref:
+          type: string
+          description: 営業収益（単位）
+        operating_revenue2_summary_of_business_results:
+          type: integer
+          description: 営業収入
+          format: int64
+        operating_revenue2_summary_of_business_results_unit_ref:
+          type: string
+          description: 営業収入（単位）
+        ordinary_income_loss_summary_of_business_results:
+          type: integer
+          description: 経常利益又は経常損失(△)
+          format: int64
+        ordinary_income_loss_summary_of_business_results_unit_ref:
+          type: string
+          description: 経常利益又は経常損失(△)(単位)
+        ordinary_income_summary_of_business_results:
+          type: integer
+          description: 経常収益
+          format: int64
+        ordinary_income_summary_of_business_results_unit_ref:
+          type: string
+          description: 経常収益（単位）
+        period:
+          type: string
+          description: 回次
+        total_assets_summary_of_business_results:
+          type: integer
+          description: 総資産額
+          format: int64
+        total_assets_summary_of_business_results_unit_ref:
+          type: string
+          description: 総資産額(単位)
+    WorkplaceBaseInfos:
+      type: object
+      properties:
+        average_age:
+          type: number
+          description: 従業員の平均年齢
+          format: double
+        average_continuous_service_years:
+          type: number
+          description: 正社員の平均継続勤務年数
+          format: double
+        average_continuous_service_years_Female:
+          type: number
+          description: 平均継続勤務年数-女性
+          format: double
+        average_continuous_service_years_Male:
+          type: number
+          description: 平均継続勤務年数-男性
+          format: double
+        average_continuous_service_years_type:
+          type: string
+          description: 平均継続勤務年数種別
+        month_average_predetermined_overtime_hours:
+          type: number
+          description: 月平均所定外労働時間
+          format: double
+    HojinInfoUpdateInfoResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          description: エラー情報(エラーがある場合に出力します。)
+          items:
+            $ref: '#/components/schemas/ApiError'
+        hojin-infos:
+          type: array
+          description: gBizINFOデータ
+          items:
+            $ref: '#/components/schemas/HojinInfo'
+        id:
+          type: string
+          description: リクエストid
+        message:
+          type: string
+          description: メッセージ
+        pageNumber:
+          type: string
+          description: ページ番号
+        totalCount:
+          type: string
+          description: 総件数
+        totalPage:
+          type: string
+          description: 総ページ数
+    ProcurementInfo:
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: 金額
+          format: int64
+        date_of_order:
+          type: string
+          description: 受注日
+        government_departments:
+          type: string
+          description: 府省
+        joint_signatures:
+          type: array
+          description: 連名
+          items:
+            type: string
+        title:
+          type: string
+          description: 事業名
+
