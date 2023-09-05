@@ -1,5 +1,3 @@
-## [Unreleased]
+## [0.1.0] - 2023-09-06
 
-## [0.1.0] - 2023-09-05
-
-- Initial release
+- 経済産業省が提供するgBizINFOのRuby製クライアントAPIをリリース
