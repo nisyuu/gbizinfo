@@ -62,10 +62,10 @@ PLATFORMS
 
 DEPENDENCIES
   gbizinfo!
-  rake (~> 13.0)
-  rspec (~> 3.0)
-  rubocop (~> 1.21)
-  typhoeus (~> 1.4)
+  rake
+  rspec
+  rubocop
+  typhoeus
 
 BUNDLED WITH
    2.4.10
