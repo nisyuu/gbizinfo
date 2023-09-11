@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gbizinfo (0.1.0)
+    gbizinfo (0.2.0)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
