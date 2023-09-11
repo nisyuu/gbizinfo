@@ -30,7 +30,7 @@ Layout/EmptyLineAfterMagicComment:
 
 # In a regular class definition, no empty lines around the body.
 Layout/EmptyLinesAroundClassBody:
-  Enabled: false
+  Enabled: true
 
 # In a regular method definition, no empty lines around the body.
 Layout/EmptyLinesAroundMethodBody:
@@ -38,7 +38,7 @@ Layout/EmptyLinesAroundMethodBody:
 
 # In a regular module definition, no empty lines around the body.
 Layout/EmptyLinesAroundModuleBody:
-  Enabled: false
+  Enabled: true
 
 Layout/FirstArgumentIndentation:
   Enabled: true
@@ -55,7 +55,7 @@ Layout/IndentationConsistency:
 
 # Two spaces, no tabs (for indentation).
 Layout/IndentationWidth:
-  Enabled: false
+  Enabled: true
 
 Layout/LeadingCommentSpace:
   Enabled: true
@@ -76,10 +76,10 @@ Layout/SpaceAroundOperators:
   Enabled: true
 
 Layout/SpaceBeforeComma:
-  Enabled: true
+    Enabled: true
 
 Layout/SpaceBeforeFirstArg:
-  Enabled: true
+    Enabled: true
 
 Style/DefWithParentheses:
   Enabled: true
@@ -102,7 +102,7 @@ Layout/SpaceInsideBlockBraces:
 
 # Use `{ a: 1 }` not `{a:1}`.
 Layout/SpaceInsideHashLiteralBraces:
-  Enabled: false
+  Enabled: true
 
 Layout/SpaceInsideParens:
   Enabled: true

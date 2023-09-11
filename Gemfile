@@ -1,11 +1,9 @@
-# frozen_string_literal: true
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
-
-# Specify your gem's dependencies in gbizinfo.gemspec
 gemspec
 
-gem "rake"
-gem "rspec"
-gem "rubocop"
-gem "typhoeus"
+group :development, :test do
+  gem 'rake', '~> 13.0.1'
+  gem 'pry-byebug'
+  gem 'rubocop', '~> 0.66.0'
+end
