@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     gbizinfo (0.1.0)
+      typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -65,7 +66,6 @@ DEPENDENCIES
   rake
   rspec
   rubocop
-  typhoeus
 
 BUNDLED WITH
    2.4.10
