@@ -11,5 +11,5 @@ OpenAPI Generator version: 7.0.0
 =end
 
 module Gbizinfo
-  VERSION = '0.2.0'
+  VERSION = '0.2.1'
 end
