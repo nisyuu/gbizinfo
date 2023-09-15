@@ -19,12 +19,12 @@ Gem::Specification.new do |s|
   s.name        = "gbizinfo"
   s.version     = Gbizinfo::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["OpenAPI-Generator"]
-  s.email       = [""]
-  s.homepage    = "https://openapi-generator.tech"
+  s.authors     = ["uichi"]
+  s.email       = ["37263474+uichi@users.noreply.github.com"]
+  s.homepage    = "https://github.com/uichi/gbizinfo"
   s.summary     = "gBizINFO REST API Ruby Gem"
-  s.description = "<div>各REST APIはHTTPリクエストヘッダX-hojinInfo-api-tokenに動作確認用のAPIトークンDTcLxzo1lZaUYaQPVdSRxdS4MzlXNCs4を指定して動作を確認することができます。</div><div>※動作確認用のAPIトークンはこのページでの動作確認でのみ使用してください。</div><div>※REST APIを利用する際は必ず、<a href='https://info.gbiz.go.jp/hojin/api_registration/form'>Web API利用申請</a>を行い、APIトークンを取得してください。</div>"
-  s.license     = "Unlicense"
+  s.description = "経済産業省が提供するgBizInfoのRuby製クライアントAPI"
+  s.license     = "MIT"
   s.required_ruby_version = ">= 2.7"
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
