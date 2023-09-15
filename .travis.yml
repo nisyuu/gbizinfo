@@ -8,4 +8,4 @@ script:
   - bundle install --path vendor/bundle
   - bundle exec rspec
   - gem build gbizinfo.gemspec
-  - gem install ./gbizinfo-0.2.0.gem
+  - gem install ./gbizinfo-0.2.1.gem
