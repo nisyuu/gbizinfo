@@ -11,5 +11,5 @@ Generator version: 7.22.0
 =end
 
 module Gbizinfo
-  VERSION = '0.2.1'
+  VERSION = '0.2.2'
 end
