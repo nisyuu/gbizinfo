@@ -1110,7 +1110,7 @@ components:
         title:
           type: string
           description: 表彰名
-    HashMap«string,string»:
+    StringMap:
       type: object
       additionalProperties:
         type: string
@@ -1146,7 +1146,7 @@ components:
           type: array
           description: 分類
           items:
-            $ref: '#/components/schemas/HashMap«string,string»'
+            $ref: '#/components/schemas/StringMap'
         patent_type:
           type: string
           description: 特許/意匠/商標
