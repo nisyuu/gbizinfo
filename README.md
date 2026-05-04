@@ -98,7 +98,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [Gbizinfo::ApiError](docs/ApiError.md)
+ - [Gbizinfo::ApiErrorResponse](docs/ApiErrorResponse.md)
  - [Gbizinfo::CertificationInfo](docs/CertificationInfo.md)
  - [Gbizinfo::CommendationInfo](docs/CommendationInfo.md)
  - [Gbizinfo::CompatibilityOfChildcareAndWork](docs/CompatibilityOfChildcareAndWork.md)

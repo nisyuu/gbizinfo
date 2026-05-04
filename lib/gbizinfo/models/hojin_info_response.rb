@@ -50,7 +50,7 @@ module Gbizinfo
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'errors' => :'Array<ApiError>',
+        :'errors' => :'Array<ApiErrorResponse>',
         :'hojin_infos' => :'Array<HojinInfo>',
         :'id' => :'String',
         :'message' => :'String'

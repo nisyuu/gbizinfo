@@ -18,7 +18,7 @@ require 'gbizinfo/version'
 require 'gbizinfo/configuration'
 
 # Models
-require 'gbizinfo/models/api_error'
+require 'gbizinfo/models/api_error_response'
 require 'gbizinfo/models/certification_info'
 require 'gbizinfo/models/commendation_info'
 require 'gbizinfo/models/compatibility_of_childcare_and_work'

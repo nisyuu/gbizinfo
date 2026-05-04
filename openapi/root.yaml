@@ -1037,7 +1037,7 @@ components:
           type: array
           description: エラー情報(エラーがある場合に出力します。)
           items:
-            $ref: '#/components/schemas/ApiError'
+            $ref: '#/components/schemas/ApiErrorResponse'
         hojin-infos:
           type: array
           description: gBizINFOデータ
@@ -1201,7 +1201,7 @@ components:
           $ref: '#/components/schemas/CompatibilityOfChildcareAndWork'
         women_activity_infos:
           $ref: '#/components/schemas/WomenActivityInfos'
-    ApiError:
+    ApiErrorResponse:
       type: object
       properties:
         item:
@@ -1333,7 +1333,7 @@ components:
           type: array
           description: エラー情報(エラーがある場合に出力します。)
           items:
-            $ref: '#/components/schemas/ApiError'
+            $ref: '#/components/schemas/ApiErrorResponse'
         hojin-infos:
           type: array
           description: gBizINFOデータ
