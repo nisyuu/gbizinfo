@@ -49,5 +49,4 @@ lib/gbizinfo/models/women_activity_infos.rb
 lib/gbizinfo/models/workplace_base_infos.rb
 lib/gbizinfo/models/workplace_info_bean.rb
 lib/gbizinfo/version.rb
-spec/models/api_error_response_spec.rb
 spec/spec_helper.rb
