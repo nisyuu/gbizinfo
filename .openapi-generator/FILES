@@ -5,7 +5,7 @@
 Gemfile
 README.md
 Rakefile
-docs/ApiError.md
+docs/ApiErrorResponse.md
 docs/CertificationInfo.md
 docs/CommendationInfo.md
 docs/CompatibilityOfChildcareAndWork.md
@@ -30,8 +30,9 @@ lib/gbizinfo/api/g_biz_inforestapi_api.rb
 lib/gbizinfo/api/g_biz_inforestapi_period_specified_search_api.rb
 lib/gbizinfo/api_client.rb
 lib/gbizinfo/api_error.rb
+lib/gbizinfo/api_model_base.rb
 lib/gbizinfo/configuration.rb
-lib/gbizinfo/models/api_error.rb
+lib/gbizinfo/models/api_error_response.rb
 lib/gbizinfo/models/certification_info.rb
 lib/gbizinfo/models/commendation_info.rb
 lib/gbizinfo/models/compatibility_of_childcare_and_work.rb
@@ -48,6 +49,5 @@ lib/gbizinfo/models/women_activity_infos.rb
 lib/gbizinfo/models/workplace_base_infos.rb
 lib/gbizinfo/models/workplace_info_bean.rb
 lib/gbizinfo/version.rb
-spec/api_client_spec.rb
-spec/configuration_spec.rb
+spec/models/api_error_response_spec.rb
 spec/spec_helper.rb

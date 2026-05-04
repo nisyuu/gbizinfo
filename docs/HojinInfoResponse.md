@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **errors** | [**Array&lt;ApiError&gt;**](ApiError.md) | エラー情報(エラーがある場合に出力します。) | [optional] |
+| **errors** | [**Array&lt;ApiErrorResponse&gt;**](ApiErrorResponse.md) | エラー情報(エラーがある場合に出力します。) | [optional] |
 | **hojin_infos** | [**Array&lt;HojinInfo&gt;**](HojinInfo.md) | gBizINFOデータ | [optional] |
 | **id** | **String** | リクエストid | [optional] |
 | **message** | **String** | メッセージ | [optional] |

@@ -1037,7 +1037,7 @@ components:
           type: array
           description: エラー情報(エラーがある場合に出力します。)
           items:
-            $ref: '#/components/schemas/ApiError'
+            $ref: '#/components/schemas/ApiErrorResponse'
         hojin-infos:
           type: array
           description: gBizINFOデータ
@@ -1110,7 +1110,7 @@ components:
         title:
           type: string
           description: 表彰名
-    HashMap«string,string»:
+    StringMap:
       type: object
       additionalProperties:
         type: string
@@ -1146,7 +1146,7 @@ components:
           type: array
           description: 分類
           items:
-            $ref: '#/components/schemas/HashMap«string,string»'
+            $ref: '#/components/schemas/StringMap'
         patent_type:
           type: string
           description: 特許/意匠/商標
@@ -1201,7 +1201,7 @@ components:
           $ref: '#/components/schemas/CompatibilityOfChildcareAndWork'
         women_activity_infos:
           $ref: '#/components/schemas/WomenActivityInfos'
-    ApiError:
+    ApiErrorResponse:
       type: object
       properties:
         item:
@@ -1333,7 +1333,7 @@ components:
           type: array
           description: エラー情報(エラーがある場合に出力します。)
           items:
-            $ref: '#/components/schemas/ApiError'
+            $ref: '#/components/schemas/ApiErrorResponse'
         hojin-infos:
           type: array
           description: gBizINFOデータ
